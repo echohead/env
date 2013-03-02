@@ -11,6 +11,8 @@ for t in \
   ssh \
   git \
   vim \
+  irssi \
+  misc \
   tmux ; do
     $ts/$t/setup
 done

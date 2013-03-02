@@ -1,0 +1,42 @@
+servers = (
+  {
+    chatnet = "relay";
+    address = "15.185.110.96";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
+    autoconnect = "yes";
+  }
+);
+
+chatnets = { relay = { type = "IRC"; }; };
+
+channels = ( );
+
+settings = {
+  core = { real_name = "Tim Miller"; user_name = "tim"; nick = "tim"; };
+  "fe-text" = { actlist_sort = "refnum"; };
+  "perl/core/scripts" = {
+    awl_block = "-20";
+    awl_display_key = "$Q%K|$N%n $H$C$S";
+    awl_display_key_active = "$Q%K|$N%n $H%U$C%n$S";
+    awl_display_nokey = "[$N]$H$C$S";
+  };
+  "fe-common/core" = {
+    theme = "madcow";
+    autolog = "yes";
+    autolog_path = "~/irc/$tag/$0.log";
+  };
+};
+statusbar = {
+  default = {
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+logs = { };
