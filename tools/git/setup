@@ -10,3 +10,5 @@ install -m 0700 -o $user -g $user $(dirname $0)/gitconfig $home/.gitconfig
 install -m 0700 -o $user -g $user $(dirname $0)/gitignore $home/.gitignore
 
 sudo -u $user echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> $home/.ssh/config
+
+ls $home/git/env || sudo -u $user git clone https://github.com/echohead/env $home/git/env
