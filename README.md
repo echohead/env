@@ -5,45 +5,25 @@ NAME
        env - program in a modified environment
 
 SYNOPSIS
-       env [OPTION]... [-] [NAME=VALUE]... [COMMAND [ARG]...]
+       curl https://raw.github.com/echohead/env/master/default | sudo bash
 
 DESCRIPTION
-       Set each NAME to VALUE in the environment and run COMMAND.
+       Set up echohead's environment. By default, this includes:
 
-       -i, --ignore-environment
-              start with an empty environment
-
-       -0, --null
-              end each output line with 0 byte rather than newline
-
-       -u, --unset=NAME
-              remove variable from the environment
-
-       --help display this help and exit
-
-       --version
-              output version information and exit
-
-       A mere - implies -i.  If no COMMAND, print the resulting environment.
+       bash, tmux, git, ssh, ...
 
 AUTHOR
-       Written by Richard Mlynarik and David MacKenzie.
+       Written by the echohead.
 
 REPORTING BUGS
-       Report env bugs to bug-coreutils@gnu.org
-       GNU coreutils home page: <http://www.gnu.org/software/coreutils/>
-       General help using GNU software: <http://www.gnu.org/gethelp/>
-       Report env translation bugs to <http://translationproject.org/team/>
+       Report env bugs to /dev/null
 
 COPYRIGHT
-       Copyright © 2011 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+       Copyright © echohead, Inc.  License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
        This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
 
 SEE ALSO
-       The full documentation for env is maintained as a Texinfo manual.  If the info and env programs are properly installed at your site, the command
+       The full documentation for env is not maintained as a Texinfo manual.  If you want documentation, read the code.
 
-              info coreutils 'env invocation'
-
-       should give you access to the complete manual.
-```
  Manual page env(1) line 1/52 (END) (press h for help or q to quit)
+```
