@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eux
+source $(dirname $0)/lib/functions
+
+ensure-root
+
+install-packages git
+
+d=`mktemp -d`
+git clone https://github.com/echohead/env.git $d
+$d/default
