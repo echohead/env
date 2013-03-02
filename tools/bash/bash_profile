@@ -1,11 +1,4 @@
 #!/bin/bash
-set -eu
-source $(dirname $0)/../lib/functions
-
-install-packages keychain
-
-write-as-user $home/.bash_profile <<eof
-#!/bin/bash
 
 /usr/bin/keychain id_rsa
 . ~/.keychain/\`uname -n\`-sh
@@ -13,63 +6,3 @@ write-as-user $home/.bash_profile <<eof
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
-eof
-
-
-write-as-user $home/.bashrc <<eof
-# If not running interactively, don't do anything
-[ -z "\$PS1" ] && return
-export HISTCONTROL=ignoreboth
-shopt -s checkwinsize
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-eval "`dircolors -b`"
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
-
-function red {
-  while read line; do echo -e "\e[01;31m$line\e[0m" >&2; done
-}
-
-function f {
-  find . -name "*$1*" -print
-}
-
-function rgrep {
-  grep -RI --color "$1"
-}
-
-function vf {
-  vi `f $1`
-}
-
-function ext_color {
-  echo -ne "\[\033[38;5;$1m\]";
-}
-
-function no_color {
-  echo -ne "\[\033[0m\]";
-}
-
-alias q='exit'
-alias src='source ~/.bashrc'
-
-alias colors='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i}\n"; done'
-
-
-
-#PS1="[`ext_color 39`\u\[\033[0m\]@`ext_color 46`\h `ext_color 213`\w`no_color`]$ "
-PS1="`no_color`[`ext_color 243`[`ext_color 236`[`ext_color 233`[`ext_color 39`\u\[\033[0m\]@`ext_color 46`\h `ext_color 213`\w`ext_color 233`]`ext_color 236`]`ext_color 243`]`no_color`]$ "
-
-export PATH=$HOME/bin:$PATH
-eof
