@@ -1,0 +1,6 @@
+#!/bin/bash
+set -eux
+source $(dirname $0)/../../lib/functions
+
+install -m 0400 -o $user -g $user -d $home/.ssh
+install -m 0400 -o $user -g $user $(dirname $0)/authorized_keys $home/.ssh/authorized_keys

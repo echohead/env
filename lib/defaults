@@ -2,3 +2,4 @@
 set -eux
 
 export user=tim
+export home=/home/$user

@@ -4,51 +4,38 @@ source $(dirname $0)/../lib/functions
 
 install-packages keychain
 
-cat > ~$user/.bash_profile <<-eof
+write-as-user $home/.bash_profile <<eof
 #!/bin/bash
 
 /usr/bin/keychain id_rsa
-. ~/.keychain/`uname -n`-sh
+. ~/.keychain/\`uname -n\`-sh
 
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
 eof
 
-cat > ~$user/.bashrc <<-eof
+
+write-as-user $home/.bashrc <<eof
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
-# don't put duplicate lines in the history. See bash(1) for more options
-export HISTCONTROL=ignoredups
-# ... and ignore same sucessive entries.
+[ -z "\$PS1" ] && return
 export HISTCONTROL=ignoreboth
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
-# make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# enable color support of ls
-if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+eval "`dircolors -b`"
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-
 
 function red {
   while read line; do echo -e "\e[01;31m$line\e[0m" >&2; done

@@ -1,7 +1,14 @@
 #!/bin/bash
 set -eux
+source $(dirname $0)/lib/functions
 ts=$(dirname $0)/tools
 
-$ts/user
-$ts/bash
-$ts/tmux
+ensure-root
+
+for t in \
+  user \
+  bash \
+  ssh \
+  tmux ; do
+    $ts/$t/setup
+done

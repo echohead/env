@@ -3,6 +3,17 @@ set -eux
 source $(dirname $(readlink -f $BASH_SOURCE))/defaults
 
 function install-packages {
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install --yes $*
+  DEBIAN_FRONTEND=noninteractive apt-get install --yes $*
 }
 
+function ensure-root {
+  if [ $(id -ur) != 0 ]; then 
+    echo "this script must be run as root"
+    exit 1
+  fi
+}
+
+function write-as-user {
+  cat > $1
+  chown $user:$user $1
+}

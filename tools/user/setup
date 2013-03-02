@@ -1,0 +1,9 @@
+#!/bin/bash
+set -eux
+source $(dirname $0)/../../lib/functions
+
+id $user || sudo useradd -m $user -s /bin/bash
+
+echo "$user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
+chmod 0440 /etc/sudoers.d/$user
+visudo -c
