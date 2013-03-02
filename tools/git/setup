@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eu
+source $(dirname $0)/../../lib/functions
+
+install-packages git
+
+install -m 0700 -o $user -g $user -d $home/git
+
+install -m 0700 -o $user -g $user $(dirname $0)/gitconfig $home/.gitconfig
+
+sudo -u $user echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> $home/.ssh/config

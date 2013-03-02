@@ -1,0 +1,12 @@
+[user]
+    name = Tim Miller
+    email = tim.miller.0@gmail.com
+[github]
+    user = echohead
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+[color]
+        diff = auto
+        status = auto
+

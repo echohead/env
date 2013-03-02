@@ -9,6 +9,7 @@ for t in \
   user \
   bash \
   ssh \
+  git \
   tmux ; do
     $ts/$t/setup
 done
