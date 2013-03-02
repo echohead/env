@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eu
+source $(dirname $0)/../../lib/functions
+
+install-packages vim
+
+rm -rf $home/.vim
+cp -r $(dirname $0)/vim $home/.vim
+chown -R $user:$user $home/.vim
+
+install -m 0700 -o $user -g $user $(dirname $0)/vimrc $home/.vimrc
