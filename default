@@ -1,0 +1,7 @@
+#!/bin/bash
+set -eux
+ts=$(dirname $0)/tools
+
+$ts/user
+$ts/bash
+$ts/tmux

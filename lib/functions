@@ -1,0 +1,8 @@
+#!/bash/bash
+set -eux
+source $(dirname $(readlink -f $BASH_SOURCE))/defaults
+
+function install-packages {
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install --yes $*
+}
+

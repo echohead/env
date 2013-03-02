@@ -1,0 +1,5 @@
+#!/bin/bash
+set -eux
+source $(dirname $0)/../lib/functions
+
+id $user || sudo useradd -m $user -s /bin/bash

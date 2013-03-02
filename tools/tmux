@@ -1,0 +1,79 @@
+#!/bin/bash
+set -eu
+source $(dirname $0)/../lib/functions
+
+install-packages tmux vlock
+
+cat > ~$user/.tmux.conf <<-eof
+# use C-a instead of C-b
+set-option -g prefix C-a
+
+set -g default-terminal "screen-256color"
+
+# remap split windows
+unbind %
+bind | split-window -h
+bind - split-window -v
+
+# reload config
+bind r source-file ~/.tmux.conf \; display "reloaded tmux.conf"
+
+# go to last window
+bind-key C-a last-window
+
+# nested tmuxes
+bind-key a send-prefix
+
+# rename window to current command
+setw -g automatic-rename on
+
+# don't constrain window size unless it's in view by a smaller client
+setw -g aggressive-resize on
+
+# no mouse
+setw -g mode-mouse off
+
+# vim pane movement
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# vim pane resize
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# status bar
+set -g status-left "#[fg=colour105] #h #[fg=green] #S #[fg=yellow]#I #[fg=cyan]#P"
+set -g status-left-length 40
+set -g status-right "#[fg=colour92]%a %d %b #[fg=colour245]%R"
+
+set -g status-bg colour234
+set -g status-fg white
+set -g status-utf8 on
+set -g status-justify centre
+
+setw -g window-status-fg colour153
+setw -g window-status-bg default
+setw -g window-status-attr dim
+setw -g window-status-current-fg white
+setw -g window-status-current-bg colour53
+setw -g window-status-current-attr bright
+
+# pane borders
+set -g pane-border-fg colour105
+set -g pane-border-bg black
+set -g pane-active-border-fg white
+set -g pane-active-border-bg colour53
+
+# messages
+set -g message-fg white
+set -g message-bg colour53
+set -g message-attr bright
+
+# lock-session
+set-option -g lock-command vlock
+eof
+
