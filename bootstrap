@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 
-DEBIAN_FRONTEND=noninteractive apt-get install -y git
+DEBIAN_FRONTEND=noninteractive apt-get install -y sudo git
 
 d=`mktemp -d`
 git clone https://github.com/echohead/env.git $d
