@@ -5,7 +5,7 @@ NAME
        env - program in a modified environment
 
 SYNOPSIS
-       curl https://raw.github.com/echohead/env/master/default | sudo bash
+       curl https://raw.github.com/echohead/env/master/bootstrap | sudo bash
 
 DESCRIPTION
        Set up echohead's environment. By default, this includes:
