@@ -2,7 +2,7 @@
 set -eu
 source $(dirname $0)/../../lib/functions
 
-install-packages git
+install-packages git tig
 
 install -m 0700 -o $user -g $user -d $home/git
 
