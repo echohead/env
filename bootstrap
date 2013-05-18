@@ -1,6 +1,7 @@
 #!/bin/bash
 set -eux
 
+sudo apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y sudo git
 
 d=`mktemp -d`
