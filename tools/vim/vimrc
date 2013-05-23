@@ -19,9 +19,16 @@ set expandtab
 
 let mapleader=","
 noremap<Leader>t :!rake spec<enter>
+
+" NERDTree
 noremap<Leader>n :NERDTreeToggle<CR>
 
-
+" git
+noremap<Leader>gs :Gstatus<CR>
+noremap<Leader>gc :Gcommit<CR>
+noremap<Leader>gb :Gblame<CR>
+noremap<Leader>gd :Gdiff<CR>
+noremap<Leader>gl :Glog<CR>
 
 highlight ExtraWhitespace ctermbg=darkred guibg=#382424
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
