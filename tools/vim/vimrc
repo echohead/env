@@ -19,6 +19,7 @@ set expandtab
 
 let mapleader=","
 noremap<Leader>t :!rake spec<enter>
+noremap<Leader>n :NERDTreeToggle<CR>
 
 
 
