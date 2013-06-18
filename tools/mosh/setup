@@ -1,0 +1,12 @@
+#!/bin/bash
+set -eux
+source $(dirname $0)/../../lib/functions
+
+install-packages python-software-properties
+
+if ! grep -R keithw/mosh /etc/apt; then
+  add-apt-repository --yes ppa:keithw/mosh
+  apt-get update
+fi
+
+install-packages mosh
