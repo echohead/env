@@ -9,7 +9,6 @@ for t in \
   user \
   bash \
   ssh \
-  mosh \
   git \
   vim \
   irssi \
