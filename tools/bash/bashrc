@@ -42,14 +42,17 @@ function no_color {
   echo -ne "\[\033[0m\]";
 }
 
+function run_scripts {
+  for f in $1/*; do
+    [ -x "$f" ] || continue
+    . $f
+  done
+}
+
 alias q='exit'
 alias src='source ~/.bashrc'
 
 alias colors='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i}\n"; done'
-
-function bbssh {
-  ssh $1.c46102.blueboxgrid.com
-}
 
 #PS1="[`ext_color 39`\u\[\033[0m\]@`ext_color 46`\h `ext_color 213`\w`no_color`]$ "
 PS1="`no_color`[`ext_color 243`[`ext_color 236`[`ext_color 233`[`ext_color 39`\u\[\033[0m\]@`ext_color 46`\h `ext_color 213`\w`ext_color 233`]`ext_color 236`]`ext_color 243`]`no_color`]$ "
@@ -57,3 +60,5 @@ PS1="`ext_color 240`\h `ext_color 26`\w `ext_color 55`. `no_color`"
 export PATH=$HOME/bin:$PATH
 
 export EDITOR=vim
+
+run_scripts $HOME/.bashrc.d
