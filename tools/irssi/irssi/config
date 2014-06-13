@@ -1,20 +1,22 @@
 servers = (
   {
-    chatnet = "relay";
-    address = "15.185.110.96";
-    port = "6667";
+    chatnet = "freenode";
+    address = "irc.freenode.net";
+    port = "8001";
     use_ssl = "no";
     ssl_verify = "no";
     autoconnect = "yes";
   }
 );
 
-chatnets = { relay = { type = "IRC"; }; };
+chatnets = { freenode = { type = "IRC"; }; };
 
-channels = ( );
+channels = (
+  { name = "#google-containers"; chatnet = "freenode"; autojoin = "yes"; }
+);
 
 settings = {
-  core = { real_name = "Tim Miller"; user_name = "tim"; nick = "tim"; };
+  core = { real_name = "Tim Miller"; user_name = "echohead"; nick = "echohead"; };
   "fe-text" = { actlist_sort = "refnum"; };
   "perl/core/scripts" = {
     awl_block = "-20";
