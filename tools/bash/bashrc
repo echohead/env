@@ -49,10 +49,6 @@ function run_scripts {
   done
 }
 
-server() {
-  open "http://localhost:${1}" && python -m SimpleHTTPServer $1
-}
-
 alias q='exit'
 alias src='source ~/.bashrc'
 
