@@ -1,6 +1,8 @@
 #!/bash/bash
 set -eu
-source $(dirname $(readlink -f $BASH_SOURCE))/defaults
+
+export user=tim
+export home=/home/$user
 
 red='\033[0;31m'
 green='\033[0;32m'
