@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eux
+set -eu
 
 sudo apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y sudo git
