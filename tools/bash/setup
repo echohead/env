@@ -2,9 +2,9 @@
 set -eu
 source $(dirname $0)/../../lib/functions
 
-install-packages keychain
-
 install -m 0400 -o $user -g $user $(dirname $0)/bash_profile $home/.bash_profile
 install -m 0400 -o $user -g $user $(dirname $0)/bashrc       $home/.bashrc
 
 install -m 0755 -o $user -g $user -d $home/.bashrc.d
+
+ok "setup bash."
