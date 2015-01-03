@@ -11,7 +11,6 @@ for t in \
   ssh \
   git \
   vim \
-  irssi \
   timezone \
   tmux ; do
     $ts/$t/setup
