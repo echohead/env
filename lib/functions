@@ -1,6 +1,19 @@
 #!/bash/bash
-set -eux
+set -eu
 source $(dirname $(readlink -f $BASH_SOURCE))/defaults
+
+red='\033[0;31m'
+green='\033[0;32m'
+nc='\033[0m'
+
+ok() {
+  echo -e "${green}$*${nc}"
+}
+
+die() {
+  echo -e "${red}$*${nc}"
+  exit 1
+}
 
 install-packages() {
   DEBIAN_FRONTEND=noninteractive apt-get install --yes $*
@@ -8,8 +21,7 @@ install-packages() {
 
 ensure-root() {
   if [ $(id -ur) != 0 ]; then
-    echo "this script must be run as root"
-    exit 1
+    die "this script must be run as root"
   fi
 }
 
@@ -21,4 +33,16 @@ add-user() {
 write-as-user() {
   cat > $1
   chown $user:$user $1
+}
+
+is-osx() {
+  uname | grep -i darwin
+}
+
+is-ubuntu() {
+  [ -e /etc/os-release ] && grep -i pretty_name /etc/os-release | grep -i ubuntu >/dev/null
+}
+
+is-debian() {
+  [ -e /etc/os-release ] && grep -i pretty_name /etc/os-release | grep -i debian >/dev/null
 }
