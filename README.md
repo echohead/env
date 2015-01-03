@@ -10,7 +10,7 @@ SYNOPSIS
 DESCRIPTION
        Set up echohead's environment. By default, this includes:
 
-       bash, tmux, git, ssh, vim, ...
+       bash, tmux, git, vim, ...
 
 AUTHOR
        Written by the echohead.
