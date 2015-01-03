@@ -1,8 +1,21 @@
 #!/bin/bash
 set -eu
 
-sudo apt-get update
-DEBIAN_FRONTEND=noninteractive apt-get install -y sudo git
+debian() { [ -e /etc/os-release ] && grep -i pretty_name /etc/os-release | grep -i debian; }
+ubuntu() { [ -e /etc/os-release ] && grep -i pretty_name /etc/os-release | grep -i ubuntu; }
+osx()    { uname | grep -i darwin }
+
+if debian || ubuntu; then
+  apt-get update
+  which git  || DEBIAN_FRONTEND=noninteractive apt-get install -y git
+  which sudo || DEBIAN_FRONTEND=noninteractive apt-get install -y sudo
+elif osx
+  echo "ERROR: osx unsupported"
+  exit 1
+else
+  echo "ERROR: unsupported platform"
+  exit 1
+fi
 
 d=`mktemp -d`
 git clone https://github.com/echohead/env.git $d

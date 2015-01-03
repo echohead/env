@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eux
-source $(dirname $0)/lib/functions
-ts=$(dirname $0)/tools
+source $(dirname $0)/common
 
 ensure-root
 
@@ -13,5 +12,5 @@ for t in \
   vim \
   timezone \
   tmux ; do
-    $ts/$t/setup
+    $(dirname $0)/$t/setup
 done

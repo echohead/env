@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eu
-source $(dirname $0)/../../lib/functions
+source $(dirname $0)/../common
 
-install-packages tmux
+which tmux || install-packages tmux
 
 install -m 0400 -o $user -g $user $(dirname $0)/tmux.conf $home/.tmux.conf
 

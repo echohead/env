@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eu
-source $(dirname $0)/../../lib/functions
+source $(dirname $0)/../common
 
 install-packages irssi
 

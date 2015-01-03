@@ -1,9 +1,10 @@
 #!/bin/bash
 set -eu
-source $(dirname $0)/../../lib/functions
+source $(dirname $0)/../common
 
-install-packages golang golang-go.tools
+which go || install-packages golang golang-go.tools
 
 install -m 0755 -o $user -g $user -d $home/go/src
 install -m 0500 -o $user -g $user $(dirname $0)/go $home/.bashrc.d/go
 
+ok "setup go."
