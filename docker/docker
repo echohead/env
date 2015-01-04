@@ -1,0 +1,3 @@
+#!/bin/bash
+alias ubuntu='docker run -i -t --rm ubuntu:latest /bin/bash'
+alias debian='docker run -i -t --rm debian:latest /bin/bash' 

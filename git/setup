@@ -8,3 +8,5 @@ install -m 0700 -o $user -g $user -d $home/git
 
 install -m 0400 -o $user -g $user $(dirname $0)/gitconfig $home/.gitconfig
 install -m 0400 -o $user -g $user $(dirname $0)/gitignore $home/.gitignore
+
+ok 'setup git.'

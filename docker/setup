@@ -1,0 +1,15 @@
+#!/bin/bash
+set -eu
+source $(dirname $0)/../common
+
+if ! is-ubuntu; then die "not implemented"; fi
+
+which docker || install-packages lxc-docker
+
+if ! groups $user | grep docker; then
+  sudo usermod -a -G docker $user
+fi
+
+install -m 0500 -o $user -g $user $(dirname $0)/docker $home/.bashrc.d/docker
+
+ok 'setup docker.'
